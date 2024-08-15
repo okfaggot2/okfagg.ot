@@ -66,32 +66,35 @@
 
     <script>
         // JavaScript to make the quotes bounce around the screen
-        function createBouncingQuote(elementId) {
-            const element = document.getElementById(elementId);
-            let x = Math.random() * window.innerWidth;
-            let y = Math.random() * window.innerHeight;
-            let dx = Math.random() * 2 + 1;
-            let dy = Math.random() * 2 + 1;
+function createBouncingQuote(elementId) {
+    const element = document.getElementById(elementId);
+    let x = Math.random() * window.innerWidth;
+    let y = Math.random() * window.innerHeight;
 
-            function move() {
-                x += dx;
-                y += dy;
+    // Adjust these values to change the speed
+    let dx = Math.random() * 4 + 2;  // Horizontal speed
+    let dy = Math.random() * 4 + 2;  // Vertical speed
 
-                if (x + element.clientWidth >= window.innerWidth || x <= 0) {
-                    dx = -dx;
-                }
-                if (y + element.clientHeight >= window.innerHeight || y <= 0) {
-                    dy = -dy;
-                }
+    function move() {
+        x += dx;
+        y += dy;
 
-                element.style.left = x + 'px';
-                element.style.top = y + 'px';
-
-                requestAnimationFrame(move);
-            }
-
-            move();
+        if (x + element.clientWidth >= window.innerWidth || x <= 0) {
+            dx = -dx * (1 + (Math.random() - 0.5) * 0.2); // Reverse and slightly change direction
         }
+        if (y + element.clientHeight >= window.innerHeight || y <= 0) {
+            dy = -dy * (1 + (Math.random() - 0.5) * 0.2); // Reverse and slightly change direction
+        }
+
+        element.style.left = x + 'px';
+        element.style.top = y + 'px';
+
+        requestAnimationFrame(move);
+    }
+
+    move();
+}
+
 
         // Start the bouncing effect for both quotes
         createBouncingQuote('quote1');
