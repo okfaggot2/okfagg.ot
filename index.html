@@ -13,6 +13,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            flex-direction: column; /* Arrange elements in a column */
         }
 
         .container {
@@ -37,6 +38,13 @@
             z-index: 0; /* Place image behind the text */
         }
 
+        #time-place-text {
+            font-size: 18px;
+            color: white;
+            text-align: center;
+            margin-top: 20px; /* Adjust the margin as needed */
+        }
+
         @keyframes shake {
             0% { transform: translate(0, 0); }
             10% { transform: translate(-5px, 5px); }
@@ -57,7 +65,6 @@
         <img id="static-image" src="ok.png" alt="Static Image">
         <div id="shaking-text">ok faggot</div>
     </div>
-
-    tiMe AnD pLaCe YoU cAn SaY tHaT tO mY fAcE dOrK???
+    <div id="time-place-text">tiMe AnD pLaCe YoU cAn SaY tHaT tO mY fAcE dOrK???</div>
 </body>
 </html>
