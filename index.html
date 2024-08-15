@@ -10,10 +10,10 @@
             margin: 0;
             overflow: hidden;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            flex-direction: column; /* Arrange elements in a column */
         }
 
         .container {
@@ -25,17 +25,14 @@
             font-size: 69px;
             color: white;
             animation: shake 0.5s infinite;
-            position: relative; /* Ensure the text is the reference point for positioning */
-            z-index: 1; /* Place text above the background image */
+            position: relative;
+            z-index: 1;
         }
 
         #static-image {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%; /* Adjust the size as needed */
             height: auto; /* Maintain aspect ratio */
-            z-index: 0; /* Place image behind the text */
+            z-index: 0;
         }
 
         #time-place-text {
@@ -65,6 +62,6 @@
         <img id="static-image" src="ok.png" alt="Static Image">
         <div id="shaking-text">ok faggot</div>
     </div>
-    <div id="time-place-text">tiMe AnD pLaCe YoU cAn SaY tHaT tO mY fAcE dOrK???</div>
+    <div id="time-place-text">"tiMe AnD pLaCe YoU cAn SaY tHaT tO mY fAcE dOrK???"</div>
 </body>
 </html>
