@@ -15,10 +15,26 @@
             height: 100vh;
         }
 
+        .container {
+            position: relative;
+            display: inline-block;
+        }
+
         #shaking-text {
             font-size: 69px;
             color: white;
             animation: shake 0.5s infinite;
+            position: relative; /* Ensure the text is the reference point for positioning */
+            z-index: 1; /* Place text above the background image */
+        }
+
+        #static-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Adjust the size as needed */
+            height: auto; /* Maintain aspect ratio */
+            z-index: 0; /* Place image behind the text */
         }
 
         @keyframes shake {
@@ -37,6 +53,9 @@
     </style>
 </head>
 <body>
-    <div id="shaking-text">ok faggot</div>
+    <div class="container">
+        <img id="static-image" src="ok.png" alt="Static Image">
+        <div id="shaking-text">ok faggot</div>
+    </div>
 </body>
 </html>
