@@ -14,32 +14,29 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            position: relative;
         }
 
         .container {
-            position: center;
-            display: inline-block;
+            text-align: center;
         }
 
         #shaking-text {
             font-size: 69px;
             color: white;
             animation: shake 0.5s infinite;
-            position: relative;
-            z-index: 1;
         }
 
         #static-image {
-            width: 100%; /* Adjust the size as needed */
-            height: auto; /* Maintain aspect ratio */
-            z-index: 0;
+            width: 100%;
+            height: auto;
         }
 
-        #time-place-text {
-            font-size: 18px;
+        .quote {
+            position: absolute;
+            font-size: 24px;
             color: white;
-            text-align: center;
-            margin-top: 20px; /* Adjust the margin as needed */
+            white-space: nowrap;
         }
 
         @keyframes shake {
@@ -62,6 +59,42 @@
         <img id="static-image" src="ok.png" alt="Static Image">
         <div id="shaking-text">ok faggot</div>
     </div>
-    <div id="time-place-text">"tiMe AnD pLaCe YoU cAn SaY tHaT tO mY fAcE dOrK???"</div>
+
+    <div id="quote1" class="quote">"Quote 1"</div>
+    <div id="quote2" class="quote">"Quote 2"</div>
+
+    <script>
+        // JavaScript to make the quotes bounce around the screen
+        function createBouncingQuote(elementId) {
+            const element = document.getElementById(elementId);
+            let x = Math.random() * window.innerWidth;
+            let y = Math.random() * window.innerHeight;
+            let dx = Math.random() * 4 + 2;
+            let dy = Math.random() * 4 + 2;
+
+            function move() {
+                x += dx;
+                y += dy;
+
+                if (x + element.clientWidth >= window.innerWidth || x <= 0) {
+                    dx = -dx;
+                }
+                if (y + element.clientHeight >= window.innerHeight || y <= 0) {
+                    dy = -dy;
+                }
+
+                element.style.left = x + 'px';
+                element.style.top = y + 'px';
+
+                requestAnimationFrame(move);
+            }
+
+            move();
+        }
+
+        // Start the bouncing effect for both quotes
+        createBouncingQuote('"TrEaD lIgHtLy"');
+        createBouncingQuote('"aNoThEr KeYbOaRd WaRrIoR!!!');
+    </script>
 </body>
 </html>
