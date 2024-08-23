@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ok faggot</title>
+    <title>Updated Page</title>
     <style>
         body {
             background-color: black;
@@ -19,17 +19,20 @@
 
         .container {
             text-align: center;
+            max-width: 100%;
+            padding: 20px;
+        }
+
+        #static-image {
+            max-width: 100%;
+            height: auto;
         }
 
         #shaking-text {
             font-size: 69px;
             color: white;
             animation: shake 0.5s infinite;
-        }
-
-        #static-image {
-            width: 100%;
-            height: auto;
+            margin-top: 20px;
         }
 
         .quote {
@@ -60,60 +63,48 @@
         <div id="shaking-text">ok faggot</div>
     </div>
 
-<!--     <div id="quote1" class="quote">"TrEaD lIgHtLy"</div>
-    <div id="quote2" class="quote">"aNoThEr KeYbOaRd WaRrIoR!!!"</div>
-    <div id="quote3" class="quote">"GlAd YoU fEeL sAfE hIdInG bEhInD yOuR pHoNe Or LaPtOp SiSsY!</div> -->
     <div id="quote1" class="quote">"Quiet. The grownups are talking."</div>
     <div id="quote2" class="quote">"Quiet. The grownups are talking."</div>
     <div id="quote3" class="quote">"Quiet. The grownups are talking."</div>
 
-    
     <script>
-        // JavaScript to make the quotes bounce around the screen
-function createBouncingQuote(elementId) {
-    const element = document.getElementById(elementId);
-    let x = Math.random() * window.innerWidth;
-    let y = Math.random() * window.innerHeight;
+        function createBouncingQuote(elementId) {
+            const element = document.getElementById(elementId);
+            let x = Math.random() * window.innerWidth;
+            let y = Math.random() * window.innerHeight;
 
-    // Adjust these values to change the speed
-    let dx = Math.random() * 0.5 + 0.5;  // Horizontal speed
-    let dy = Math.random() * 0.5 + 0.5;  // Vertical speed
+            let dx = Math.random() * 0.5 + 0.5;
+            let dy = Math.random() * 0.5 + 0.5;
 
-    function move() {
-        x += dx;
-        y += dy;
+            function move() {
+                x += dx;
+                y += dy;
 
-        if (x + element.clientWidth >= window.innerWidth || x <= 0) {
-            dx = -dx;
-            // Introduce a small random angle change to prevent straight up/down movement
-            dy += (Math.random() - 0.5) * 2;
+                if (x + element.clientWidth >= window.innerWidth || x <= 0) {
+                    dx = -dx;
+                    dy += (Math.random() - 0.5) * 2;
+                }
+                if (y + element.clientHeight >= window.innerHeight || y <= 0) {
+                    dy = -dy;
+                    dx += (Math.random() - 0.5) * 2;
+                }
+
+                const speed = Math.sqrt(dx * dx + dy * dy);
+                const speedLimit = 6;
+                if (speed > speedLimit) {
+                    dx = (dx / speed) * speedLimit;
+                    dy = (dy / speed) * speedLimit;
+                }
+
+                element.style.left = x + 'px';
+                element.style.top = y + 'px';
+
+                requestAnimationFrame(move);
+            }
+
+            move();
         }
-        if (y + element.clientHeight >= window.innerHeight || y <= 0) {
-            dy = -dy;
-            // Introduce a small random angle change to prevent straight left/right movement
-            dx += (Math.random() - 0.5) * 2;
-        }
 
-        // Normalize the speed to avoid excessive acceleration
-        const speed = Math.sqrt(dx * dx + dy * dy);
-        const speedLimit = 6; // Limit the speed to prevent excessive movement
-        if (speed > speedLimit) {
-            dx = (dx / speed) * speedLimit;
-            dy = (dy / speed) * speedLimit;
-        }
-
-        element.style.left = x + 'px';
-        element.style.top = y + 'px';
-
-        requestAnimationFrame(move);
-    }
-
-    move();
-}
-
-
-
-        // Start the bouncing effect for both quotes
         createBouncingQuote('quote1');
         createBouncingQuote('quote2');
         createBouncingQuote('quote3');
